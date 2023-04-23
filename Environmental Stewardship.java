@@ -1,31 +1,52 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class EnvironmentalStewardship extends JFrame implements ActionListener {
     
     private JPanel mainPanel, gamePanel, instructionsPanel;
-    private JButton quizButton, learnButton, backButton, quitButton, checkButton;
+    private JButton quiz, learn, back, quit, check;
     private JTextField guessTextField;
     private JLabel guessLabel, resultLabel;
 
-    public EnvironmentalStewardship() {
+    public static void mainMenu() {
         super("Environmental Stewardship");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(3, 4));
-        quizButton = new JButton("Quiz");
-        quizButton.addActionListener(this);
+        
+        quiz = new JButton("Quiz");
+        quiz.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.dispose();
+                quizWindow();
+            } 
+        });
+        
         learnButton = new JButton("Learn");
-        learnButton.addActionListener(this);
-        quitButton = new JButton("Quit");
-        quitButton.addActionListener(this);
+        learn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.dispose();
+                learnWindow();
+            } 
+        });
+        
+        quit = new JButton("Quit");
+        quit.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                frame.dispose();
+            } 
+        });
         
         // Add buttons to main panel
-        mainPanel.add(quizButton);
-        mainPanel.add(learnButton);
-        mainPanel.add(quitButton);
+        mainPanel.add(quiz);
+        mainPanel.add(learn);
+        mainPanel.add(quit);
         
         // Add main panel to frame
         add(mainPanel);
@@ -48,8 +69,8 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
             JLabel q3 = new JLabel("Question here");
             JLabel q4 = new JLabel("Question here");
             
-                        JButton backButton = new JButton("Back");
-            backButton.addActionListener(new ActionListener() {
+            JButton backButton = new JButton("Back");
+            backButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     quizFrame.dispose();
@@ -57,8 +78,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
             });
     
             quizPanel.add(guessLabel);
-            quizPanel.add(guessTextField);
-            quizPanel.add(checkButton);
             quizPanel.add(backButton);
             quizPanel.add(resultLabel);
     
@@ -75,8 +94,9 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
             learnPanel.setLayout(new GridLayout(5, 20));
             
             // Instructions label and back button
-            JLabel learnLabel = new JLabel("Guess a number between 1 and 100.");
-            JButton backButton = new JButton("Back");
+            learnInfo();
+            //JLabel learnLabel = new JLabel("Guess a number between 1 and 100.");
+            //JButton backButton = new JButton("Back");
             
             backButton.addActionListener(new ActionListener() {
                 @Override
@@ -85,7 +105,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
                 }
             });
     
-            learnPanel.add(learnLabel);
+            //learnPanel.add(learnLabel);
             learnPanel.add(backButton);
     
             learnFrame.getContentPane().add(learnPanel);
@@ -97,6 +117,9 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         else if (event.getSource() == quitButton) {
             dispose();
         }
+    }
+    public static void learnInfo(){
+        J
     }
       public static void main(String[] args) {
         new EnvironmentalStewardship();
