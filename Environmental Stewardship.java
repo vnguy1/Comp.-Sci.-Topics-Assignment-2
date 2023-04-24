@@ -4,11 +4,13 @@ import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 public class EnvironmentalStewardship extends JFrame implements ActionListener {
 
     private JPanel mainPanel, quizPanel, learnPanel;
     private JButton quizButton, learnButton, backButton, quitButton, checkButton;
-    private JTextField guessTextField;
     private JLabel guessLabel, resultLabel;
 
     public EnvironmentalStewardship() {
@@ -93,7 +95,15 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         learnPanel.setLayout(new GridLayout(5, 20));
 
         // Instructions label and back button
-        JLabel learnLabel = new JLabel("Guess a number between 1 and 100.");
+        JLabel instruction = new JLabel("Click the different images to learn.");
+        
+        Icon nature = new ImageIcon("nature.JPG");
+        JButton env = new JButton(nature);
+        
+        
+        
+        
+        
         backButton = new JButton("Back");
 
         backButton.addActionListener(new ActionListener() {
@@ -104,8 +114,10 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
             }
         });
 
-        learnPanel.add(learnLabel);
+        learnPanel.add(instruction);
         learnPanel.add(backButton);
+        
+        learnPanel.add(env);
 
         learnFrame.getContentPane().add(learnPanel);
         learnFrame.pack();
