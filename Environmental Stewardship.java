@@ -4,9 +4,6 @@ import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
 public class EnvironmentalStewardship extends JFrame implements ActionListener {
 
     private JPanel mainPanel, quizPanel, learnPanel;
@@ -55,7 +52,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
     }
 
     public void quizWindow() {
-        JFrame quizFrame = new JFrame("Quiz - Start");
+        JFrame quizFrame = new JFrame("Quiz");
         quizFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         quizPanel = new JPanel();
@@ -88,7 +85,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
     }
 
     public void learnWindow() {
-        JFrame learnFrame = new JFrame("Guessing Game - Learn");
+        JFrame learnFrame = new JFrame("Learn");
         learnFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         learnPanel = new JPanel();
@@ -96,16 +93,53 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
 
         // Instructions label and back button
         JLabel instruction = new JLabel("Click the different images to learn.");
-        
-        Icon nature = new ImageIcon("nature.JPG");
-        JButton env = new JButton(nature);
-        
-        
-        
-        
-        
-        backButton = new JButton("Back");
 
+        JButton env = new JButton("Environment");
+        env.setBounds(10, 330, 100, 128);
+        env.setBorder(BorderFactory.createEmptyBorder());
+        env.setContentAreaFilled(false);
+        env.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                learnFrame.dispose();
+                impactsEnv();
+            }
+        });
+            
+        JButton humans = new JButton("Humans");
+        humans.setBounds(10, 330, 100, 128);
+        humans.setBorder(BorderFactory.createEmptyBorder());
+        humans.setContentAreaFilled(false);
+        humans.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                learnFrame.dispose();
+                impactsHuman();
+            }
+        });
+        
+        JButton reduce = new JButton("Reducing Impacts");
+        reduce.setBounds(10, 330, 100, 128);
+        reduce.setBorder(BorderFactory.createEmptyBorder());
+        reduce.setContentAreaFilled(false);
+        reduce.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                learnFrame.dispose();
+                reducingImpacts();
+            }
+        });
+        
+        JButton initiatives = new JButton("Initiatives");
+        initiatives.setBounds(10, 330, 100, 128);
+        initiatives.setBorder(BorderFactory.createEmptyBorder());
+        initiatives.setContentAreaFilled(false);
+        initiatives.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                learnFrame.dispose();
+                envInitiatives();
+            }
+        });
+    
+
+        backButton = new JButton("Back");
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,11 +147,14 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
                 mainPanel.setVisible(true);
             }
         });
+    
 
         learnPanel.add(instruction);
-        learnPanel.add(backButton);
-        
         learnPanel.add(env);
+        learnPanel.add(humans);
+        learnPanel.add(reduce);
+        learnPanel.add(initiatives);
+        learnPanel.add(backButton);
 
         learnFrame.getContentPane().add(learnPanel);
         learnFrame.pack();
@@ -125,6 +162,98 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         learnFrame.setVisible(true);
     }
 
+      public void impactsEnv() {
+        JFrame envFrame = new JFrame("Impacts on the Environment");
+        envFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel envPanel = new JPanel();
+        envPanel.setLayout(new GridLayout(3, 1));
+        
+        envPanel.add(backButton);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                envFrame.dispose();
+                learnPanel.setVisible(true);
+            }
+        });
+
+        envFrame.getContentPane().add(envPanel);
+        envFrame.pack();
+        envFrame.setLocationRelativeTo(null);
+        envFrame.setVisible(true);
+
+    }
+    
+    public void impactsHuman() {
+        JFrame humanFrame = new JFrame("Impacts on Humans");
+        humanFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel humanPanel = new JPanel();
+        humanPanel.setLayout(new GridLayout(3, 1));
+        
+        humanPanel.add(backButton);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                humanFrame.dispose();
+                learnPanel.setVisible(true);
+            }
+        });
+
+        humanFrame.getContentPane().add(humanPanel);
+        humanFrame.pack();
+        humanFrame.setLocationRelativeTo(null);
+        humanFrame.setVisible(true);
+
+    }
+    
+    public void reducingImpacts() {
+        JFrame humanFrame = new JFrame("Reducing Negative Impacts");
+        humanFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel humanPanel = new JPanel();
+        humanPanel.setLayout(new GridLayout(3, 1));
+        
+        humanPanel.add(backButton);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                humanFrame.dispose();
+                learnPanel.setVisible(true);
+            }
+        });
+
+        humanFrame.getContentPane().add(humanPanel);
+        humanFrame.pack();
+        humanFrame.setLocationRelativeTo(null);
+        humanFrame.setVisible(true);
+
+    }
+    
+    public void envInitiatives() {
+        JFrame initiativesFrame = new JFrame("Impacts on Humans");
+        initiativesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel initiativesPanel = new JPanel();
+        initiativesPanel.setLayout(new GridLayout(3, 1));
+        
+        initiativesPanel.add(backButton);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                initiativesFrame.dispose();
+                learnPanel.setVisible(true);
+            }
+        });
+
+        initiativesFrame.getContentPane().add(initiativesPanel);
+        initiativesFrame.pack();
+        initiativesFrame.setLocationRelativeTo(null);
+        initiativesFrame.setVisible(true);
+
+    }
+    
     public static void main(String[] args) {
         new EnvironmentalStewardship();
     }
