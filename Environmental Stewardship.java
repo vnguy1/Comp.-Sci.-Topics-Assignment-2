@@ -88,13 +88,21 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         learnFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         learnPanel = new JPanel();
-        learnPanel.setLayout(new GridLayout(3, 4));
+        learnPanel.setPreferredSize(new Dimension(320, 200));
+        learnPanel.setLayout(new BoxLayout(learnPanel, BoxLayout.Y_AXIS));
 
         // Instructions label and back button
         JLabel instruction = new JLabel("Click to learn more.");
+        instruction.setFont(new Font(instruction.getName(), Font.PLAIN, 18));
+        instruction.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        JLabel space = new JLabel("");
+        space.setPreferredSize(new Dimension(100, 50));
+        
         JButton env = new JButton("Impacts on the Environment");
+        env.setPreferredSize(new Dimension(200, 50));
         env.setContentAreaFilled(false);
+        env.setAlignmentX(Component.CENTER_ALIGNMENT);
         env.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 learnFrame.dispose();
@@ -103,7 +111,9 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         });
             
         JButton humans = new JButton("Impacts on Humans");
+        humans.setPreferredSize(new Dimension(200, 50));
         humans.setContentAreaFilled(false);
+        humans.setAlignmentX(Component.CENTER_ALIGNMENT);
         humans.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 learnFrame.dispose();
@@ -112,7 +122,9 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         });
         
         JButton reduce = new JButton("Reducing Impacts");
+        reduce.setPreferredSize(new Dimension(200, 50));
         reduce.setContentAreaFilled(false);
+        reduce.setAlignmentX(Component.CENTER_ALIGNMENT);
         reduce.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 learnFrame.dispose();
@@ -121,7 +133,9 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         });
         
         JButton initiatives = new JButton("Initiatives");
+        initiatives.setPreferredSize(new Dimension(200, 50));
         initiatives.setContentAreaFilled(false);
+        initiatives.setAlignmentX(Component.CENTER_ALIGNMENT);
         initiatives.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 learnFrame.dispose();
@@ -129,8 +143,10 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
             }
         });
     
-
+        
         menuButton = new JButton("Menu");
+        menuButton.setPreferredSize(new Dimension(200, 50));
+        menuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         menuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -141,6 +157,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
     
 
         learnPanel.add(instruction);
+        learnPanel.add(space);
         learnPanel.add(env);
         learnPanel.add(humans);
         learnPanel.add(reduce);
