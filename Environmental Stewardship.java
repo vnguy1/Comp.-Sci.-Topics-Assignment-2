@@ -1,11 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class EnvironmentalStewardship extends JFrame implements ActionListener {
-
     private JPanel mainPanel, quizPanel, learnPanel;
     private JButton quizButton, learnButton, backButton, quitButton, menuButton;
 
@@ -53,36 +50,141 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
     public void quizWindow() {
         JFrame quizFrame = new JFrame("Quiz");
         quizFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+    
         quizPanel = new JPanel();
-        quizPanel.setLayout(new GridLayout(3, 4));
-
-        JLabel q1 = new JLabel("Question here");
-        JLabel q2 = new JLabel("Question here");
-        JLabel q3 = new JLabel("Question here");
-        JLabel q4 = new JLabel("Question here");
-
-        menuButton = new JButton("Menu");
-        menuButton.addActionListener(new ActionListener() {
+        quizPanel.setPreferredSize(new Dimension(700, 800));
+        quizPanel.setLayout(new GridLayout(0, 1, 0, 10));
+    
+        JLabel q1 = new JLabel("1. Why are wind turbines more beneficial than solar panels?");
+        ButtonGroup group1 = new ButtonGroup();
+        JRadioButton opt1a = new JRadioButton("Not affected by changing weather conditions");
+        JRadioButton opt1b = new JRadioButton("Cost less");
+        JRadioButton opt1c = new JRadioButton("Produce more energy");
+        group1.add(opt1a);
+        group1.add(opt1b);
+        group1.add(opt1c);
+    
+        JLabel q2 = new JLabel("2. What are the main sources of technology that create air pollution?");
+        ButtonGroup group2 = new ButtonGroup();
+        JRadioButton opt2a = new JRadioButton("Burning of fossil fuels");
+        JRadioButton opt2b = new JRadioButton("Mass agriculture");
+        JRadioButton opt2c = new JRadioButton("A & B");
+        group2.add(opt2a);
+        group2.add(opt2b);
+        group2.add(opt2c);
+        
+        JLabel q3 = new JLabel("3. How has technology improved relationships?");
+        ButtonGroup group3 = new ButtonGroup();
+        JRadioButton opt3a = new JRadioButton("It hasn't");
+        JRadioButton opt3b = new JRadioButton("Allows for more communication");
+        JRadioButton opt3c = new JRadioButton("Easier to use technology");
+        group3.add(opt3a);
+        group3.add(opt3b);
+        group3.add(opt3c);
+        
+        JLabel q4 = new JLabel("4. How can you lose your hearing?");
+        ButtonGroup group4 = new ButtonGroup();
+        JRadioButton opt4a = new JRadioButton("Listening to audio through speakers");
+        JRadioButton opt4b = new JRadioButton("Always looking down at a screen");
+        JRadioButton opt4c = new JRadioButton("Constant exposure to loud sounds");
+        group4.add(opt4a);
+        group4.add(opt4b);
+        group4.add(opt4c);
+    
+        JLabel q5 = new JLabel("5. How can you reduce the overuse of electricity?");
+        ButtonGroup group5 = new ButtonGroup();
+        JRadioButton opt5a = new JRadioButton("Turn off your monitor at the end of the day");
+        JRadioButton opt5b = new JRadioButton("Recycle all unused computer parts");
+        JRadioButton opt5c = new JRadioButton("Walk or use a bike");
+        group5.add(opt5a);
+        group5.add(opt5b);
+        group5.add(opt5c);
+        
+        JLabel q6 = new JLabel("6. What is the main goal of environmental stewardship programs in our community?");
+        ButtonGroup group6 = new ButtonGroup();
+        JRadioButton opt6a = new JRadioButton("Reduce negative impacts of technology on humans");
+        JRadioButton opt6b = new JRadioButton("Reduce E-waste");
+        JRadioButton opt6c = new JRadioButton("Create energy with renewable resources");
+        group6.add(opt6a);
+        group6.add(opt6b);
+        group6.add(opt6c);
+        
+        JButton checkButton = new JButton("Check");
+        checkButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int score = 0;
+                if (opt1a.isSelected()) {
+                    score++;
+                }
+                if (opt2c.isSelected()) {
+                    score++;
+                }
+                if (opt3b.isSelected()) {
+                    score++;
+                }
+                if (opt4c.isSelected()) {
+                    score++;
+                }
+                if (opt5a.isSelected()) {
+                    score++;
+                }
+                if (opt6b.isSelected()) {
+                    score++;
+                }
+                JOptionPane.showMessageDialog(quizFrame, "Your score is " + score);
+            }
+        });
+    
+        backButton = new JButton("Back");
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 quizFrame.dispose();
                 mainPanel.setVisible(true);
             }
         });
-
+    
         quizPanel.add(q1);
+        quizPanel.add(opt1a);
+        quizPanel.add(opt1b);
+        quizPanel.add(opt1c);
+        
         quizPanel.add(q2);
+        quizPanel.add(opt2a);
+        quizPanel.add(opt2b);
+        quizPanel.add(opt2c);
+        
         quizPanel.add(q3);
+        quizPanel.add(opt3a);
+        quizPanel.add(opt3b);
+        quizPanel.add(opt3c);
+        
         quizPanel.add(q4);
-        quizPanel.add(menuButton);
-
+        quizPanel.add(opt4a);
+        quizPanel.add(opt4b);
+        quizPanel.add(opt4c);
+        
+        quizPanel.add(q5);
+        quizPanel.add(opt5a);
+        quizPanel.add(opt5b);
+        quizPanel.add(opt5c);
+        
+        quizPanel.add(q6);
+        quizPanel.add(opt6a);
+        quizPanel.add(opt6b);
+        quizPanel.add(opt6c);
+        
+        quizPanel.add(checkButton);
+        quizPanel.add(backButton);
+    
         quizFrame.getContentPane().add(quizPanel);
         quizFrame.pack();
         quizFrame.setLocationRelativeTo(null);
         quizFrame.setVisible(true);
     }
 
+    
     public void learnWindow() {
         JFrame learnFrame = new JFrame("Learn");
         learnFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -142,7 +244,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
                 envInitiatives();
             }
         });
-    
         
         menuButton = new JButton("Menu");
         menuButton.setPreferredSize(new Dimension(200, 50));
@@ -155,7 +256,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
             }
         });
     
-
         learnPanel.add(instruction);
         learnPanel.add(space);
         learnPanel.add(env);
@@ -169,7 +269,9 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         learnFrame.setLocationRelativeTo(null);
         learnFrame.setVisible(true);
     }
-        // --------------------
+      
+    // --------------------
+    
       public void impactsEnv() {
         JFrame envFrame = new JFrame("Impacts on the Environment");
         envFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -203,7 +305,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         scrollPane2.setPreferredSize(new Dimension(1140, 330));
         envPanel.add(scrollPane2);
         
-        
         backButton = new JButton("Back");
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         envPanel.add(backButton);
@@ -219,7 +320,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         envFrame.pack();
         envFrame.setLocationRelativeTo(null);
         envFrame.setVisible(true);
-
     }
     
     public void impactsHuman() {
@@ -253,8 +353,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         JScrollPane scrollPane4 = new JScrollPane(text4);
         scrollPane4.setPreferredSize(new Dimension(920, 320));
         humanPanel.add(scrollPane4);
-        
-        
+                
         backButton = new JButton("Back");
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         humanPanel.add(backButton);
@@ -270,7 +369,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         humanFrame.pack();
         humanFrame.setLocationRelativeTo(null);
         humanFrame.setVisible(true);
-
     }
     
     public void reducingImpacts() {
@@ -279,8 +377,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
 
         JPanel reducePanel = new JPanel();
         reducePanel.setLayout(new BoxLayout(reducePanel, BoxLayout.PAGE_AXIS));
-                
- 
+    
         JLabel title5 = new JLabel("HOW TO REDUCE THE NEGATIVE IMPACTS");
         title5.setAlignmentX(Component.CENTER_ALIGNMENT);
         title5.setFont(new Font(title5.getName(), Font.PLAIN, 24));
@@ -293,7 +390,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         JScrollPane scrollPane5 = new JScrollPane(text5);
         scrollPane5.setPreferredSize(new Dimension(920, 590));
         reducePanel.add(scrollPane5);
-        
         
         backButton = new JButton("Back");
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -310,7 +406,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         reduceFrame.pack();
         reduceFrame.setLocationRelativeTo(null);
         reduceFrame.setVisible(true);
-
     }
     
     public void envInitiatives() {
@@ -319,7 +414,6 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
 
         JPanel intitiativesPanel = new JPanel();
         intitiativesPanel.setLayout(new BoxLayout(intitiativesPanel, BoxLayout.PAGE_AXIS));
-
                 
         JLabel title6 = new JLabel("PROGRAMS & INITIATIVES IN OUR COMMUNITY");
         title6.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -333,8 +427,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         JScrollPane scrollPane6 = new JScrollPane(text6);
         scrollPane6.setPreferredSize(new Dimension(920, 170));
         intitiativesPanel.add(scrollPane6);
-        
-        
+                
         backButton = new JButton("Back");
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         intitiativesPanel.add(backButton);
@@ -350,8 +443,7 @@ public class EnvironmentalStewardship extends JFrame implements ActionListener {
         initiativesFrame.pack();
         initiativesFrame.setLocationRelativeTo(null);
         initiativesFrame.setVisible(true);
-
-        }
+    }
     
     public static void main(String[] args) {
         new EnvironmentalStewardship();
